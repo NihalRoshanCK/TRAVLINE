@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
@@ -44,9 +43,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
-            <main className="w-full h-full">
-              {children}
-            </main>
+            <main className="w-full h-full">{children}</main>
             {/* <footer className="w-full flex items-center justify-center py-3">
               <Link
                 isExternal
