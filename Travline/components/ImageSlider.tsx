@@ -1,5 +1,6 @@
 "use client";
-import { useState, useRef } from "react";
+
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 
@@ -8,17 +9,43 @@ import image2 from "@/public/image2.jpg";
 import image3 from "@/public/image3.jpg";
 import image4 from "@/public/image4.jpg";
 
-// Interface for image data
-interface ImageData {
+interface SlideData {
   src: StaticImageData;
+  header: string;
+  packageName: string;
+  description: string;
+  quout: string;
 }
 
-// Image data array
-const images: ImageData[] = [
-  { src: image1 },
-  { src: image2 },
-  { src: image3 },
-  { src: image4 },
+const slides: SlideData[] = [
+  {
+    src: image2,
+    header: "God's Own Kerala",
+    packageName: "Kerala Packages ",
+    description: " Journey Through Paradise",
+    quout: "God's Own Kerala",
+  },
+  {
+    src: image3,
+    header: " Amazing Thailand",
+    packageName: "Thailand Packages",
+    description: "The Land OF Smiles Awaits",
+    quout: "Thailand Treasures",
+  },
+  {
+    src: image1,
+    header: "Beautiful Maldives",
+    packageName: "Maldives Packages",
+    description: "Escape to Tropical Bliss",
+    quout: "Maldives Magic",
+  },
+  {
+    src: image4,
+    header: "EXOTIC GOA",
+    packageName: "Goa Packages",
+    description: "Sun, Sand, and Serenity",
+    quout: "Goa Gateway",
+  },
 ];
 
 export default function ImageSlider(): JSX.Element {
@@ -27,35 +54,36 @@ export default function ImageSlider(): JSX.Element {
   const startX = useRef<number>(0);
   const isDragging = useRef<boolean>(false);
 
-  // Function to show the previous slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const prevSlide = (): void => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
     );
   };
 
-  // Function to show the next slide
   const nextSlide = (): void => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
-  // Handle mouse down event
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>): void => {
     isDragging.current = true;
     startX.current = e.clientX;
   };
 
-  // Handle mouse up event
   const handleMouseUp = (): void => {
     isDragging.current = false;
   };
 
-  // Handle mouse move event
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
     if (!isDragging.current) return;
 
     const deltaX = e.clientX - startX.current;
-
     if (deltaX > 50) {
       prevSlide();
       isDragging.current = false;
@@ -64,44 +92,6 @@ export default function ImageSlider(): JSX.Element {
       isDragging.current = false;
     }
   };
-
-  interface SlideData {
-    src: StaticImageData;
-    header: string;
-    packageName: string;
-    description: string;
-    quout: string;
-  }
-  const slides: SlideData[] = [
-    {
-      src: image2,
-      header: "God's Own Kerala",
-      packageName: "Kerala Packages ",
-      description: " Journey Through Paradise",
-      quout: "God's Own Kerala",
-    },
-    {
-      src: image3,
-      header: " Amazing Thailand",
-      packageName: "Thailand Packages",
-      description: "The Land OF Smiles Awaits",
-      quout: "Thailand Treasures",
-    },
-    {
-      src: image1,
-      header: "Beautiful Maldives",
-      packageName: "Maldives Packages",
-      description: "Escape to Tropical Bliss",
-      quout: "Maldives Magic",
-    },
-    {
-      src: image4,
-      header: "EXOTIC GOA",
-      packageName: "Goa Packages",
-      description: "Sun, Sand, and Serenity",
-      quout: "Goa Gateway",
-    },
-  ];
 
   return (
     <div className="w-full h-full select-none">
