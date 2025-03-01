@@ -94,10 +94,10 @@ export default function ImageSlider(): JSX.Element {
   };
 
   return (
-    <div className="w-full h-full select-none">
+    <div className="w-full h-screen select-none ">
       <div
         ref={sliderRef}
-        className="relative h-full group overflow-hidden"
+        className="relative h-full overflow-hidden"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -109,20 +109,20 @@ export default function ImageSlider(): JSX.Element {
           objectFit="cover"
           src={slides[currentIndex].src}
         />
-        <div className="relative h-1/4 w-full top-1/3 left-1/4flex flex-col items-center justify-center">
-          <div className="h-[50%] flex justify-center items-center">
+        <div className="relative sm:h-fit w-full sm:top-1/3 h-1/2  flex flex-col gap-8 items-center text-center justify-center">
+          <div className="h-[50%] flex justify-center items-center ">
             <p className="text-7xl font-bold text-white h-1/2 ">
               {slides[currentIndex].header}
             </p>
           </div>
-          <div className="h-[50%] w-[100%] flex justify-center items-center">
-            <button className=" text-white  hover:opacity-80 hover:bg-slate-200 hover:text-black hover:cursor-pointer h-[50%] w-[10%] border-2 rounded-full">
+          <div className="h-fit   w-fit flex justify-center items-center">
+            <button className=" text-white  hover:opacity-80 hover:bg-slate-200 hover:text-black p-6 hover:cursor-pointer  border-2 rounded-full">
               {slides[currentIndex].packageName}
             </button>
           </div>
         </div>
-        <div className=" relative w-full h-[14%] top-[60%]   flex justify-center items-center">
-          <div className="w-1/2 h-full  flex">
+        <div className=" relative w-full sm:h-[14%] sm:top-[50%] h-1/2 flex justify-center items-center overflow-hidden">
+          <div className=" sm:w-1/2 w-full h-fit  flex">
             {slides.map((slide, index) => (
               <div
                 key={index}

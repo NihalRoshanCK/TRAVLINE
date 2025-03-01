@@ -2,7 +2,7 @@ import ImageSlider from "@/components/ImageSlider";
 
 export default function Home() {
   return (
-    <section className=" h-full w-full">
+    <section className=" h-screen w-full">
       <ImageSlider />
     </section>
   );
