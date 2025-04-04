@@ -89,9 +89,9 @@ export const Navbar = () => {
           {/* <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link> */}
-          {/* <ThemeSwitch /> */}
+          <ThemeSwitch />
         </NavbarItem>
-        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
+        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
           {/* <Button
             isExternal
@@ -115,7 +115,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {/* {searchInput} */}
+        {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>

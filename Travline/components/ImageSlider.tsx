@@ -94,7 +94,7 @@ export default function ImageSlider(): JSX.Element {
   };
 
   return (
-    <div className="w-full h-screen select-none ">
+    <div className="w-full h-[100%] select-none overflow-hidden ">
       <div
         ref={sliderRef}
         className="relative h-full overflow-hidden"
@@ -109,9 +109,9 @@ export default function ImageSlider(): JSX.Element {
           objectFit="cover"
           src={slides[currentIndex].src}
         />
-        <div className="relative sm:h-fit w-full sm:top-1/3 h-1/2  flex flex-col gap-8 items-center text-center justify-center">
-          <div className="h-[50%] flex justify-center items-center ">
-            <p className="text-7xl font-bold text-white h-1/2 ">
+        <div className="relative sm:h-fit w-full sm:top-1/3 h-full gap-6  flex flex-col  items-center text-center justify-center">
+          <div className="sm:h-[50%] h-fit flex justify-center items-center ">
+            <p className="text-7xl font-bold text-white ">
               {slides[currentIndex].header}
             </p>
           </div>
@@ -121,12 +121,12 @@ export default function ImageSlider(): JSX.Element {
             </button>
           </div>
         </div>
-        <div className=" relative w-full sm:h-[14%] sm:top-[50%] h-1/2 flex justify-center items-center overflow-hidden">
-          <div className=" sm:w-1/2 w-full h-fit  flex">
+        <div className="relative  w-full sm:h-[14%] sm:top-[50%] h-1/2 sm:flex hidden justify-center items-center o">
+          <div className=" md:w-1/2 w-full sm:h-full h-fit flex">
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="transition-opacity duration-500 ease-in-out  w-1/4 h-full  border-l-1 "
+                className="transition-opacity duration-500 ease-in-out  w-1/4 h-fit  border-l-1 "
               >
                 <div className="h-1/2 w-full pl-3 flex flex-col gap-3 text-white">
                   <p>{slide.description}</p>
