@@ -25,8 +25,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="lg:px-20">
-        <MostCarosel/>
+      <div className="">
+        <div className="bg-">
+        
+        </div>
       </div>
       <div>
 
